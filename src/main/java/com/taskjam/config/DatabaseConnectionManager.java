@@ -1,4 +1,4 @@
-package com.taskjam.utils; // Adjust to match your exact package structure
+package com.taskjam.config; // Adjust to match your exact package structure
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

@@ -13,7 +13,7 @@ public class UserRepository extends GenericRepository<User>{
         String sql = "SELECT * FROM users WHERE id = ?";
      return executeQuery(sql,UserSupplier::getUser,id);
     }
-    public int createUser(User user){
+    public int addUser(User user){
         String sql = "INSERT INTO users (username,email,password_hash,created_at) VALUES (?,?,?,?)";
         return executeUpdateReturnGeneratedKey(sql,
                 user.getUserName(),user.getEmail(),user.getPasswordHash(),user.getCreatedAt());

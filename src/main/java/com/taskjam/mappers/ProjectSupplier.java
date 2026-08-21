@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 public class ProjectSupplier {
-    public Project getProject(ResultSet rs) throws SQLException {
+    public static Project getProject(ResultSet rs) throws SQLException {
         return new Project(
                 rs.getInt("id"),
                 rs.getString("name"),

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProjectMembersSupplier {
-    public ProjectMembers getProjectMembers(ResultSet rs) throws SQLException{
+    public static ProjectMembers getProjectMembers(ResultSet rs) throws SQLException{
         return new ProjectMembers(
                 rs.getInt("project_id"),
                 rs.getInt("user_id")

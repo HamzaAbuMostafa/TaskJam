@@ -1,7 +1,6 @@
 package com.taskjam.repositories;
 
 import com.taskjam.entities.User;
-import com.taskjam.config.DatabaseConnectionManager;
 import com.taskjam.mappers.UserSupplier;
 
 import java.sql.*;

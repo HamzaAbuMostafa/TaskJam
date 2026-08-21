@@ -1,9 +1,11 @@
 package com.taskjam.repositories;
 
 import com.taskjam.entities.Project;
+import com.taskjam.entities.ProjectMembers;
 import com.taskjam.mappers.ProjectSupplier;
 
 import java.sql.Connection;
+import java.util.List;
 import java.util.Optional;
 
 public class ProjectRepository extends GenericRepository<Project> {
@@ -11,6 +13,11 @@ public class ProjectRepository extends GenericRepository<Project> {
     public Optional<Project> getProjectById(int id){
         String sql = "SELECT * FROM projects WHERE id = ?";
         return executeQuery(sql, ProjectSupplier::getProject, id);
+    }
+
+    public List<Project> getUserProjectsById (int userId){
+        String sql = "SELECT projects.* FROM projects JOIN project_members ON projects.id = project_members.project_id WHERE user_id = ?";
+        return executeQueryForList(sql, ProjectSupplier::getProject, userId);
     }
 
     public  Optional<Project> getProjectByName(String name){

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class  GenericRepository <T>{
-    public Optional<T> executeQuery(String sql, RowMapper<T> mapper, Object... values){
+public abstract class  GenericRepository {
+    public <T> Optional<T> executeQuery(String sql, RowMapper<T> mapper, Object... values){
         try (Connection connection = DatabaseConnectionManager.getInstance().getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)){
             for (int i = 0; i < values.length; i++) {
@@ -60,7 +60,7 @@ public class  GenericRepository <T>{
         }
     }
 
-    public List<T> executeQueryForList(String sql, RowMapper<T> mapper, Object... values){
+    public <T> List<T> executeQueryForList(String sql, RowMapper<T> mapper, Object... values){
         List<T> results = new ArrayList<>();
         try (Connection connection = DatabaseConnectionManager.getInstance().getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)){
@@ -77,10 +77,4 @@ public class  GenericRepository <T>{
             throw new RuntimeException(e);
         }
     }
-
-
-
-
-
-
 }

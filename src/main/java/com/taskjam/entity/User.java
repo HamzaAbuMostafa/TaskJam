@@ -1,4 +1,4 @@
-package com.taskjam.entities;
+package com.taskjam.entity;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

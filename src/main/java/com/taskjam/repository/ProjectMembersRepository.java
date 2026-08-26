@@ -1,14 +1,12 @@
-package com.taskjam.repositories;
+package com.taskjam.repository;
 
-import com.taskjam.entities.Project;
-import com.taskjam.entities.ProjectMembers;
-import com.taskjam.entities.User;
-import com.taskjam.mappers.ProjectMembersSupplier;
-import com.taskjam.mappers.ProjectSupplier;
-import com.taskjam.mappers.UserSupplier;
+import com.taskjam.entity.Project;
+import com.taskjam.entity.ProjectMembers;
+import com.taskjam.entity.User;
+import com.taskjam.mapper.ProjectSupplier;
+import com.taskjam.mapper.UserSupplier;
 
 import java.util.List;
-import java.util.Optional;
 
 public class ProjectMembersRepository extends GenericRepository {
 

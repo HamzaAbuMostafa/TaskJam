@@ -1,4 +1,4 @@
-package com.taskjam.entities;
+package com.taskjam.entity;
 
 public class ProjectMembers {
 

@@ -1,6 +1,6 @@
-package com.taskjam.mappers;
+package com.taskjam.mapper;
 
-import com.taskjam.entities.Project;
+import com.taskjam.entity.Project;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,7 +1,7 @@
-package com.taskjam.repositories;
+package com.taskjam.repository;
 
 import com.taskjam.config.DatabaseConnectionManager;
-import com.taskjam.mappers.RowMapper;
+import com.taskjam.mapper.RowMapper;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -44,27 +44,14 @@
 <body>
 
 <%
-    // 1. Session Authorization Check
-    // Grab the current session (passing 'false' means it won't create a new one if it doesn't exist)
-    HttpSession currentSession = request.getSession(false);
-    Integer userId = null;
-
-    if (currentSession != null) {
-        userId = (Integer) currentSession.getAttribute("userId");
-    }
-
-    // If the session is missing or the userId attribute is null, kick them out
-    if (userId == null) {
-        response.sendRedirect("register.jsp?error=Please log in to view your dashboard");
-        return; // Stop processing the rest of the JSP
-    }
+    Integer userId = (Integer) request.getSession(false).getAttribute("userId");
 %>
 
 <div class="container">
     <div class="header">
         <h2>Welcome to TaskJam Dashboard!</h2>
         <!-- You will eventually map this to a LogoutServlet -->
-        <a href="logoutServlet" class="logout-btn">Logout</a>
+        <a href="logout" class="logout-btn">Logout</a>
     </div>
 
     <div class="content">

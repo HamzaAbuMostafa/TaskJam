@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-@WebServlet("/logoutServlet")
+@WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
 
     @Override

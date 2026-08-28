@@ -115,7 +115,7 @@
     <% } %>
 
     <!-- Posts to your LoginServlet -->
-    <form action="loginServlet" method="POST">
+    <form action="login" method="POST">
         <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" required>
@@ -130,7 +130,7 @@
     </form>
 
     <div class="footer-text">
-        Don't have an account? <a href="register.jsp">Register here</a>
+        Don't have an account? <a href="register">Register here</a>
     </div>
 </div>
 

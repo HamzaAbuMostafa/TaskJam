@@ -99,7 +99,7 @@
     <% } %>
 
     <!-- The action matches your @WebServlet("/registerServlet") -->
-    <form action="registerServlet" method="POST">
+    <form action="register" method="POST">
         <div class="form-group">
             <label for="userName">Username</label>
             <!-- name="userName" MUST match request.getParameter("userName") -->
@@ -122,7 +122,7 @@
     </form>
 
     <div class="footer-text">
-        Already have an account? <a href="login.jsp">Log in here</a>
+        Already have an account? <a href="login">Log in here</a>
     </div>
 </div>
 

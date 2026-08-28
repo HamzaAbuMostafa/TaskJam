@@ -14,13 +14,18 @@ import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-@WebServlet("/registerServlet")
+@WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
     private UserService userService;
 
     @Override
     public void init(){
         userService = new UserService(new UserRepository());
+    }
+
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("register.jsp").forward(request,response);
     }
 
     @Override

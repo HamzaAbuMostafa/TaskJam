@@ -19,6 +19,6 @@ public class LogoutServlet extends HttpServlet {
         if(session != null)
             session.invalidate();
         String message = java.net.URLEncoder.encode("You have been logged out", StandardCharsets.UTF_8);
-        response.sendRedirect("login.jsp?success=" + message);
+        response.sendRedirect("login?success=" + message);
     }
 }

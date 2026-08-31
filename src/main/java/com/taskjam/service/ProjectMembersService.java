@@ -1,5 +1,6 @@
 package com.taskjam.service;
 
+import com.taskjam.DTO.ProjectDTO;
 import com.taskjam.entity.Project;
 import com.taskjam.entity.ProjectMembers;
 import com.taskjam.entity.User;
@@ -35,11 +36,11 @@ public class ProjectMembersService {
         return projectMembersRepo.addProjectMembers(projectMembers);
     }
 
-    public boolean removeUserFromProject(int projectId, int userId, String requesterUsername){
+    public boolean removeUserFromProject(int projectId, int userId, int requesterId){
         if(projectId < 1 || userId < 1)
             throw new IllegalArgumentException("ID is invalid");
         Project project = projectRepo.getProjectById(projectId).orElseThrow(() -> new IllegalArgumentException("Project not found"));
-        if(!project.getCreatedBy().equalsIgnoreCase(requesterUsername))
+        if(project.getCreatorId() != requesterId)
             throw new IllegalArgumentException("Unauthorized: Only the project creator can remove members.");
         return projectMembersRepo.deleteProjectMembers(projectId,userId);
     }
@@ -48,5 +49,18 @@ public class ProjectMembersService {
         if(projectId < 1)
             throw new IllegalArgumentException("ID is invalid");
         return projectMembersRepo.getProjectMembersById(projectId);
+    }
+
+    public List<ProjectDTO> getUserProjectDashboard(int userId){
+        if(userId < 1){
+            throw new IllegalArgumentException("Invalid user ID");
+        }
+        return projectMembersRepo.getUserProjectsById(userId).stream()
+                .map(project -> new ProjectDTO(
+                        project.getId(),
+                        project.getName(),
+                        project.getDescription()
+                ))
+                .toList();
     }
 }

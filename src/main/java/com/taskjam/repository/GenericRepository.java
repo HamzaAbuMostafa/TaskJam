@@ -41,6 +41,19 @@ public abstract class  GenericRepository {
         }
     }
 
+    public boolean executeUpdate(String sql, Connection connection, Object... values){
+        try (PreparedStatement ps = connection.prepareStatement(sql)){
+            for (int i = 0; i < values.length; i++) {
+                ps.setObject(i+1,values[i]);
+            }
+            int affectedRows = ps.executeUpdate();
+            return (affectedRows > 0);
+
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
     public int executeUpdateReturnGeneratedKey(String sql, Object... values){
         try (Connection connection = DatabaseConnectionManager.getInstance().getConnection();
              PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
@@ -55,6 +68,24 @@ public abstract class  GenericRepository {
                 }
             }
                 return -1;
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int executeUpdateReturnGeneratedKey(String sql, Connection connection, Object... values){
+        try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
+            for (int i = 0; i < values.length; i++) {
+                ps.setObject(i+1,values[i]);
+            }
+            int affectedRows = ps.executeUpdate();
+            if(affectedRows > 0){
+                try (ResultSet rs = ps.getGeneratedKeys()){
+                    if(rs.next())
+                        return rs.getInt(1);
+                }
+            }
+            return -1;
         } catch (SQLException e){
             throw new RuntimeException(e);
         }

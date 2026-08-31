@@ -3,6 +3,7 @@ package com.taskjam.repository;
 import com.taskjam.entity.Project;
 import com.taskjam.mapper.ProjectSupplier;
 
+import java.sql.Connection;
 import java.util.Optional;
 
 public class ProjectRepository extends GenericRepository {
@@ -20,7 +21,13 @@ public class ProjectRepository extends GenericRepository {
     public int addProject(Project project){
         String sql = "INSERT INTO projects (name,description,created_by,created_at) VALUES (?,?,?,?)";
         return executeUpdateReturnGeneratedKey(sql,
-                project.getName(),project.getDescription(),project.getCreatedBy(),project.getCreatedAt());
+                project.getName(),project.getDescription(),project.getCreatorId(),project.getCreatedAt());
+    }
+
+    public int addProject(Project project, Connection connection){
+        String sql = "INSERT INTO projects (name,description,created_by,created_at) VALUES (?,?,?,?)";
+        return executeUpdateReturnGeneratedKey(sql,connection,
+                project.getName(),project.getDescription(),project.getCreatorId(),project.getCreatedAt());
     }
 
     public boolean deleteProjectById(int id){

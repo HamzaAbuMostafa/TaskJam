@@ -36,9 +36,9 @@ public class RegisterServlet extends HttpServlet {
         try {
             userService.registerUser(userName, email, rawPassword);
             String successMessage = URLEncoder.encode("Account created successfully! Please log in.", StandardCharsets.UTF_8);
-            response.sendRedirect("login.jsp?success=" + successMessage);
+            response.sendRedirect("login?success=" + successMessage);
         } catch (IllegalArgumentException e){
             String errorMessage = URLEncoder.encode(e.getMessage(), StandardCharsets.UTF_8);
-            response.sendRedirect("register.jsp?error=" + errorMessage);        }
+            response.sendRedirect("register?error=" + errorMessage);        }
     }
 }

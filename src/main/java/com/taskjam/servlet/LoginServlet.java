@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("dashboard");
         } else {
             String errorMessage = URLEncoder.encode("Incorrect email or password.", StandardCharsets.UTF_8);
-            response.sendRedirect("login.jsp?error=" + errorMessage);
+            response.sendRedirect("login?error=" + errorMessage);
         }
     }
 }

@@ -12,8 +12,8 @@ public class ProjectSupplier {
                 rs.getInt("id"),
                 rs.getString("name"),
                 rs.getString("description"),
-                rs.getString("created_by"),
-                rs.getObject("created_at", LocalDateTime.class)
+                rs.getInt("created_by"),
+                rs.getTimestamp("created_at") != null ? rs.getTimestamp("created_at").toLocalDateTime() : null
         );
     }
 }

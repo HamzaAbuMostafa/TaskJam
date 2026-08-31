@@ -6,13 +6,20 @@ import com.taskjam.entity.User;
 import com.taskjam.mapper.ProjectSupplier;
 import com.taskjam.mapper.UserSupplier;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class ProjectMembersRepository extends GenericRepository {
 
     public boolean addProjectMembers(ProjectMembers projectMembers){
         String sql = "INSERT INTO project_members (project_id,user_id) VALUES (?,?)";
-        return executeUpdate(sql,projectMembers.getProjectId(),projectMembers.getUserId());
+        return executeUpdate(sql, projectMembers.getProjectId(),projectMembers.getUserId());
+    }
+
+    public boolean addProjectMembers(ProjectMembers projectMembers, Connection connection){
+        String sql = "INSERT INTO project_members (project_id,user_id) VALUES (?,?)";
+        return executeUpdate(sql, connection,
+                projectMembers.getProjectId(),projectMembers.getUserId());
     }
 
     public boolean deleteProjectMembers(int projectId, int userId){

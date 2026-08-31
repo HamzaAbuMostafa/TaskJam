@@ -8,21 +8,21 @@ public class Project {
     private int id;
     private String name;
     private String description;
-    private String createdBy;
+    private int creatorId;
     private LocalDateTime createdAt;
 
-    public Project(int id, String name, String description, String createdBy, LocalDateTime createdAt) {
+    public Project(int id, String name, String description, int creatorId, LocalDateTime createdAt) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.createdBy = createdBy;
+        this.creatorId = creatorId;
         this.createdAt = createdAt;
     }
 
-    public Project(String name, String description, String createdBy, LocalDateTime createdAt) {
+    public Project(String name, String description, int creatorId, LocalDateTime createdAt) {
         this.name = name;
         this.description = description;
-        this.createdBy = createdBy;
+        this.creatorId = creatorId;
         this.createdAt = createdAt;
     }
 
@@ -53,12 +53,12 @@ public class Project {
         this.description = description;
     }
 
-    public String getCreatedBy() {
-        return createdBy;
+    public int getCreatorId() {
+        return creatorId;
     }
 
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
+    public void setCreatorId(int creatorId) {
+        this.creatorId = creatorId;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -85,7 +85,7 @@ public class Project {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", createdBy=" + createdBy +
+                ", createdBy=" + creatorId +
                 ", createdAt=" + createdAt +
                 '}';
     }
